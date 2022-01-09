@@ -14,6 +14,12 @@ class Header
     public $width;
 
     /**
+     * @var
+     * Danh sách class style
+     */
+    public $thStyle;
+
+    /**
      * Sets the header's title
      * @param string $title Header's title to be shown
      */
@@ -23,6 +29,11 @@ class Header
         $header->title = $title;
 
         return $header;
+    }
+
+    public function thStyle($class){
+        $this->thStyle = $class;
+        return $this;
     }
 
     /**

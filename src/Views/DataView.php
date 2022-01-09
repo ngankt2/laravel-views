@@ -43,7 +43,7 @@ abstract class DataView extends View
 
     public $sortBy = null;
 
-    public $sortOrder = 'asc';
+    public $sortOrder = null;
 
     public $selected = [];
     public $allSelected = false;

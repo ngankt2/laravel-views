@@ -19,14 +19,14 @@ UI components used:
 
   @if (count($items))
     {{-- Content table --}}
-    <div class="overflow-x-scroll lg:overflow-x-visible">
+    <div class="overflow-x-auto">
       @include('laravel-views::components.table')
     </div>
 
   @else
     {{-- Empty data message --}}
-    <div class="flex justify-center items-center p-4">
-      <h3>{{ __('There are no items in this table') }}</h3>
+    <div class="alert alert-danger-soft show flex items-center mx-2 my-2" role="alert">
+      <i class="w-6 h-6 mr-2">{!! $icons->get('alert-circle') !!} </i> {!! _lang('record_not_found') !!}.
     </div>
   @endif
 

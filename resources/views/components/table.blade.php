@@ -8,12 +8,11 @@ props:
   - itmes
   - actionsByRow --}}
 
-<table class="min-w-full">
-
-  <thead class="border-b border-t border-gray-200 bg-gray-100 text-xs leading-4 font-semibold uppercase tracking-wider text-left">
-    <tr>
+<table class="{{$styles['tableClass']??'min-w-full'}}">
+  <thead>
+    <tr class="{{$styles['theadClass']??'border-b border-t border-gray-200 bg-gray-100 text-xs leading-4 font-semibold uppercase tracking-wider text-left'}}">
       @if ($this->hasBulkActions)
-        <th class="pl-3">
+        <th class="{{$styles['headerActionClass']??'pl-3'}}">
           <span class="flex items-center justify-center">
             <x-lv-checkbox wire:model="allSelected" />
           </span>
@@ -21,7 +20,7 @@ props:
       @endif
       {{-- Renders all the headers --}}
       @foreach ($headers as $header)
-        <th class="px-3 py-3" {{ is_object($header) && ! empty($header->width) ? 'width=' . $header->width . '' : '' }}>
+        <th class="{{$styles['thClass']??'px-3 py-3 '}}" {{ is_object($header) && ! empty($header->width) ? 'width=' . $header->width . '' : '' }}>
           @if (is_string($header))
             {{ $header }}
           @else
@@ -61,7 +60,7 @@ props:
         @endif
         {{-- Renders all the content cells --}}
         @foreach ($view->row($item) as $column)
-          <td class="px-3 py-2 whitespace-no-wrap">
+          <td class="{{$styles['tdClass']??'px-3 py-2 whitespace-no-wrap'}}">
             {!! $column !!}
           </td>
         @endforeach

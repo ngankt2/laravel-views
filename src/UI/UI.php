@@ -6,6 +6,16 @@ use Illuminate\Support\Facades\View;
 
 class UI
 {
+    static private $singleInstance;
+
+    public static function &getInstance()
+    {
+        if(!self::$singleInstance){
+            self::$singleInstance = new self();
+        }
+        return self::$singleInstance;
+    }
+
     public function editable($model, $field)
     {
         return $this->component('laravel-views::components.editable', [
@@ -52,6 +62,15 @@ class UI
         return $this->component('laravel-views::components.attributes-list', array_merge(
             ['data' => $attributes],
             $options
+        ));
+    }
+
+    public function text_ellipsis($string,$max_width=100,$class='')
+    {
+        return $this->component('laravel-views::components.text_ellipsis', compact(
+            'string',
+            'max_width',
+            'class',
         ));
     }
 

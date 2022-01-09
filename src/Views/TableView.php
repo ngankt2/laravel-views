@@ -15,6 +15,9 @@ abstract class TableView extends DataView
     {
         $data = parent::getRenderData();
         $data['headers'] = $this->headers();
+        if (method_exists($this, 'styles')) {
+            $data['styles'] = @$this->styles();
+        }
 
         return $data;
     }
